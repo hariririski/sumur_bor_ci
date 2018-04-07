@@ -1,17 +1,10 @@
 <?php
 $nama_lokasi=$_POST['nama_transportasi'];
-
 $lintang=$_POST['lintang'];//5.
-
 $bujur=$_POST['bujur']; // 95.
-
 $kedalaman_akuifer=$_POST['kedalaman_akuifer'];
-
-
 $nama_kabupaten=$_POST['country'];
-
 $nama_kecamatan=$_POST['nama_kecamatan'];
-
 $nama_desa=$_POST['nama_desa'];
 
 $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBJEyzwKXH2n9SpdmUoRQqWbtvOVSLukyw&origins=$lintang,$bujur&destinations=$lintang,$bujur&language=id-ID&sensor=false");
@@ -27,7 +20,7 @@ if(strcmp($data3[15],"Aceh")==0){
 $foto_lokasi=basename($_FILES["foto_sumur_bor"]["name"]);
 $foto_lokasi="img/".$foto_lokasi;
 upload("foto_sumur_bor");
-	
+
 		include"../maps/db.php";
 	$perintah="INSERT INTO `data_sumur_bor`(`lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto_lokasi`)
 		VALUES ('$nama_lokasi','$nama_desa','$nama_kecamatan','$nama_kabupaten','$bujur','$lintang','$kedalaman_akuifer','$foto_lokasi')";
@@ -41,7 +34,7 @@ upload("foto_sumur_bor");
 		}
 */
 }else{
-	
+
 	echo "<script type='text/javascript'>alert('Koordinat yang dimasukkan Bukan Di Aceh Melainkan ".$data3[15]."');</script>";
 }
 ?>
@@ -63,7 +56,7 @@ function upload($name){
 		if(strpos($file,$extractFile['filename']) !== false)
 		$sameName++; // Tambah data file yang sama
 	}
-	/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai 
+	/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai
 	* nama ketika diupload, jika $sameName > 0 maka pakai format "namafile($sameName).ext */
 	$newName = empty($sameName) ? $uploadFile['name'] : $extractFile['filename'].'('.$sameName.').'.$extractFile['extension'];
 

@@ -3,8 +3,9 @@
 <html lang="en">
   <head>
     <?php include('share/header.php')?>
+
     <title>
-      Kontak
+      Layer
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -24,6 +25,10 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
+	<link href="table/css1/charisma-app.css" rel="stylesheet">
+
+    <link href='table/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
 <script src="js/html5shiv.js">
@@ -35,7 +40,7 @@
 
   <body>
     <!--header start-->
-     <?php include'share/logo.php';?>
+      <?php include'share/logo.php';?>
     <!--header end-->
 
     <!--breadcrumbs start-->
@@ -44,89 +49,93 @@
         <div class="row">
           <div class="col-lg-4 col-sm-4">
             <h1>
-             Kontak
+              Data Layer
             </h1>
           </div>
           <div class="col-lg-8 col-sm-8">
             <ol class="breadcrumb pull-right">
               <li>
                 <a href="#">
-                  Beranda
+                 Beranda
                 </a>
               </li>
-
+              <li>
+                <a href="#">
+                  Data
+                </a>
+              </li>
               <li class="active">
-                Kontak
+               Layer
               </li>
             </ol>
           </div>
         </div>
       </div>
     </div>
-    <!--breadcrumbs end-->
 
-    <!--container start-->
+
+ <center><a href="tambah_layer.php" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-info btn-lg" >Tambah Layer</a></center>
+<?php 	include('modala.php');?>
+
+	   <div id="content" class="col-lg-12 col-sm-12">
+            <!-- content starts -->
+
+
     <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="about-carousel wow fadeInLeft">
-            <div id="myCarousel" class="carousel slide">
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-                <div class="active item">
-                  <img src="img/kontak/1.jpg" alt="">
-                  <div class="carousel-caption">
-                    <p>
-                      Gedung FMIPA Unsyiah
-                    </p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/kontak/2.jpg" alt="">
-                  <div class="carousel-caption">
-                    <p>
-                      Gedung Lab Terpadu
-                    </p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/kontak/3.jpg" alt="">
-                  <div class="carousel-caption">
-                    <p>
-                      Gedung Lab Dasar
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- Carousel nav -->
-              <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                <i class="fa fa-angle-left">
-                </i>
-              </a>
-              <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                <i class="fa fa-angle-right">
-                </i>
-              </a>
-            </div>
-          </div>
+    <div class="box col-md-12">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2>Data Layer</h2>
+
+        <div class="box-icon">
+
         </div>
-        <div class="col-lg-7 about wow fadeInRight">
-		<h1>
-              Info Kontak
-            </h1>
-            <address>
-              <p><i class="fa fa-home pr-10"></i>Alamat : Jalan T. Nyak Arief No. 195, Jeulingke, Kota Banda Aceh</p>
-              <p><i class="fa fa-globe pr-10"></i>Banda Aceh,Indonesia </p>
-              <p><i class="fa fa-mobile pr-10"></i>Phone : (0651) 7554737, 7551773</p>
-            </address>
+    </div>
+    <div class="box-content">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>Nama Layer</th>
+        <th>URL</th>
+        <th>Edit Hapus</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+
+                  include'maps/db.php';
+                  $i=0;
+                  $tampil = "SELECT * FROM layer";
+                  $sql = mysqli_query($con,$tampil);
+                  while($data = mysqli_fetch_array($sql))
+                   {
+                   $i++;
+                   echo '
+                   <tr>
+                    <td width="30px">'.$i.'</td>
+                    <td class="center">'.$data['nama_layer'].'</td>
+                    <td class="center">'.$data['url'].'</td>
+                    <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
+
+
+
+                  </tr>
+                  ';
+                   }
+  ?>
+
+
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <!--/span-->
+
+    </div><!--/row-->
         </div>
-      </div>
-      </div>
-
-
-
-    <!--container end-->
-
     <!--footer start-->
    <?php include'share/footer.php';?>
 
@@ -216,5 +225,40 @@
 
     </script>
 
+<script src="table/abower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="table/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+
+<!-- data table plugin -->
+<script src='table/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="table/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="table/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="table/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="table/bower_components/responsive-tables/responsive-tables.js"></script>
+
+<!-- star rating plugin -->
+<script src="table/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="table/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="table/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="table/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="table/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="table/js/charisma.js"></script>
+<script type="text/javascript">
+			$('body').on('hidden.bs.modal', '.modal', function () { $(this).removeData('bs.modal'); });
+			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+		</script>
   </body>
+
 </html>

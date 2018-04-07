@@ -5,7 +5,7 @@
     <?php include('share/header.php')?>
 
     <title>
-      SITrans | Data Admin
+    Data Admin
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -24,9 +24,9 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-	
+
 	<link href="table/css1/charisma-app.css" rel="stylesheet">
-    
+
     <link href='table/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -76,16 +76,16 @@
 <?php include('modala.php');?>
    <div id="content" class="col-lg-12 col-sm-12">
             <!-- content starts -->
-                
 
-    <div class="row">
+
+    <div class="container">
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
         <h2>Data Admin</h2>
 
         <div class="box-icon">
-            
+
         </div>
     </div>
     <div class="box-content">
@@ -96,44 +96,44 @@
         <th>Username</th>
         <th>Nama lengkap</th>
         <th>Hapus</th>
-        
-        
-        
-        
+
+
+
+
     </tr>
     </thead>
     <tbody>
     <?php
                   include'maps/db.php';
-                  $i=0; 
+                  $i=0;
                   $tampil = "SELECT * from users";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
                    {
                    $i++;
-                   
-                  
-                  
+
+
+
                    echo '
                    <tr>
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['username'].'</td>
                     <td class="center">'.$data['nama'].'</td>
-                  
+
 				   <td width="50px">
 					<a href="proses/proses_hapus_admin.php?id='.$data['id'].'"><button class="btn btn-danger ">Hapus</button></a>
                     </td>
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
                   </tr>
                   ';
                    }
   ?>
-    
-    
+
+
     </tbody>
     </table>
     </div>
@@ -231,7 +231,7 @@
 
 
     </script>
-	
+
 <script src="table/abower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->

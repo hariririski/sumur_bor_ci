@@ -13,36 +13,44 @@ $error=''; // Variabel untuk menyimpan pesan error
 		$password=$_POST['pas'];
 		// Membangun koneksi ke database
 		include('../maps/db.php');
-		// Mencegah MySQL injection 
+		// Mencegah MySQL injection
 		$username = stripslashes($username);
 		$password = stripslashes($password);
 		$username = mysqli_real_escape_string($con,$username);
 		$password = mysqli_real_escape_string($con,$password);
 		// Seleksi Database
-		
+
 		// SQL query untuk memeriksa apakah karyawan terdapat di database?
 		$query = mysqli_query($con,"select * from users where password='$password' AND username='$username'");
-		
+
 		$rows = mysqli_num_rows($query);
-		
-		
+
+
 			if ($rows == 1) {
-				
-				
-				$_SESSION['login']=$rows; // Membuat Sesi/session
-				echo $rows;
+				$nama;
+				$id;
+				$query = mysqli_query($con,"select * from users where password='$password' AND username='$username'");
+				while($data = mysqli_fetch_array($query))
+				 {
+					 $nama=$data['nama'];
+					 $id=$data['id'];
+				 }
+				 $_SESSION['nama']=$nama;
+				 $_SESSION['id']=$id;
+				 $_SESSION['login']=$rows;
+
 				header("location: ../index.php"); // Mengarahkan ke halaman profil
-				
-			
-				
-				
+
+
+
+
 			} else {
-				
+
 				echo $rows;
 				header("location: ../login.php"); // Mengarahkan ke halaman profil
 			}
-				
-				
+
+
 	}
 
 ?>

@@ -4,7 +4,7 @@
   <head>
    <?php include('share/header.php')?>
 
-    <title>SITrans | Peta</title>
+    <title>Peta</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

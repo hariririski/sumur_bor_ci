@@ -5,7 +5,7 @@
     <?php include('share/header.php')?>
 
     <title>
-      Acme | Home
+  Beranda
     </title>
 <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,700' rel='stylesheet' type='text/css'>
 
@@ -109,11 +109,11 @@
 			</li>
 		</ul> <!-- .cd-slider -->
 	</div> <!-- .cd-slider-wrapper -->
-  
+
 <script src="js/jquery-2.1.4.js"></script>
 <script src="js/jquery.mobile.custom.min.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
-   
+
     <!--/sequence-theme-->
     <!-- End of Sequence Modern Slider -->
 
@@ -121,8 +121,8 @@
 
 
 
-   
-    
+
+
     <!--property end-->
 
    </div>
@@ -131,16 +131,16 @@
 
 
 
-    
 
-   
+
+
     <!--container end-->
 
     <!--footer start-->
     <?php include'share/footer.php';?>
     <!-- footer end -->
     <!--small footer start -->
-    
+
     <!--small footer end-->
 
     <!-- js placed at the end of the document so the pages load faster

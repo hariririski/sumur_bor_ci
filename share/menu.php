@@ -33,7 +33,7 @@
       <a href="data_layer.php">Layer</a>
     </li>
     <li>
-      <a href="data_alamat.php">Data Alamat</a>
+      <a href="data_alamat.php?id=alamat">Data Alamat</a>
     </li>
     <li>
       <a href="data_admin.php">Data Admin</a>

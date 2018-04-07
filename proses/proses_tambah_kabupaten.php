@@ -5,23 +5,23 @@ $foto_kabupaten="img/".$foto_kabupaten;
 upload("foto_kabupaten");
 
 		include"../maps/db.php";
-		echo $perintah="INSERT INTO `kabupaten`(`nama_kabupaten`, `logo`) VALUES ('$nama_kabupaten','$foto_kabupaten')";
+		$perintah="INSERT INTO `kabupaten`(`nama_kabupaten`, `logo`) VALUES ('$nama_kabupaten','$foto_kabupaten')";
 		$query = mysqli_query($con,$perintah);
 		if ($query) {
-				
-				
+
+
 				echo "<script type='text/javascript'>alert('Selamat Anda Telah menambah Kabupaten Baru');</script>";
-				echo '<script>document.location = "../data_alamat.php"</script>';
+				echo '<script>document.location = "../data_alamat.php?id=kabupaten"</script>';
 				//header("location: ../data_alamat.php"); // Mengarahkan ke halaman profil
-				
-			
-				
-				
+
+
+
+
 			} else {
 				echo "<script type='text/javascript'>alert('Maaf Anda Gagal Kabupaten');</script>";
-				//echo '<script>document.location = "../data_alamat.php"</script>';
+				echo '<script>document.location = "../data_alamat.php?id=kabupaten"</script>';
 			}
-    
+
 
 ?>
 <?php
@@ -41,7 +41,7 @@ function upload($name){
 		if(strpos($file,$extractFile['filename']) !== false)
 		$sameName++; // Tambah data file yang sama
 	}
-	/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai 
+	/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai
 	* nama ketika diupload, jika $sameName > 0 maka pakai format "namafile($sameName).ext */
 	$newName = empty($sameName) ? $uploadFile['name'] : $extractFile['filename'].'('.$sameName.').'.$extractFile['extension'];
 

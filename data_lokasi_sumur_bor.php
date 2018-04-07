@@ -5,7 +5,7 @@
     <?php include('share/header.php')?>
 
     <title>
-      SITrans | Transportasi
+    Data Sumur Bor
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -18,17 +18,17 @@
     <link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/animate.css">
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-	
+
 
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-	
+
 	<link href="table/css1/charisma-app.css" rel="stylesheet">
-    
+
     <link href='table/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-	
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
 <script src="js/html5shiv.js">
@@ -65,28 +65,28 @@
                 </a>
               </li>
               <li class="active">
-               Data Transportasi
+               Data Sumur Bor
               </li>
             </ol>
           </div>
         </div>
       </div>
     </div>
-	
+
     <!--breadcrumbs end-->
 	<center> <a href="tambah_lokasi_sumur_bor.php" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah Lokasi Sumur Bor</button><center></a>
    <div id="content" class="col-lg-12 col-sm-12">
             <!-- content starts -->
-                
 
-    <div class="row">
+
+    <div class="container">
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
         <h2>Data Sumur Bor</h2>
 
         <div class="box-icon">
-            
+
         </div>
     </div>
     <div class="box-content">
@@ -96,34 +96,34 @@
         <th>No</th>
         <th>Nama</th>
         <th>Foto</th>
-        
-       
+
+
         <th>Desa</th>
         <th>Kecamatan</th>
         <th>Kabupaten/Kota</th>
         <th>Kedalaman Akuifer</th>
         <th>Detail</th>
-        
+
     </tr>
     </thead>
     <tbody>
     <?php
 	include('modala.php');
                   include'maps/db.php';
-                  $i=0; 
+                  $i=0;
                   $tampil = "SELECT * FROM `data_sumur_bor`, kabupaten, kecamatan, desa WHERE data_sumur_bor.kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kecamatan=desa.id_kecamatan";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
                    {
                    $i++;
-                   
-                  
-                  
+
+
+
                    echo '
                    <tr>
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['lokasi'].'</td>
-                   
+
 					';
 					if ($data['foto_lokasi']!=null){
 					echo'
@@ -133,22 +133,22 @@
 						echo "<td>-</td>";
 					}
 					echo'
-                   
-                    
+
+
                     <td class="center">'.$data['nama_desa'].'</td>
                     <td class="center">'.$data['nama_kecamatan'].'</td>
                     <td class="center">'.$data['nama_kabupaten'].'</td>
                     <td class="center">'.$data['kedalaman_akuifer'].'</td>
                     <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
-                    
-                    
-                    
+
+
+
                   </tr>
                   ';
                    }
   ?>
-    
-    
+
+
     </tbody>
     </table>
     </div>
@@ -246,7 +246,7 @@
 
 
     </script>
-	
+
 <script src="table/abower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->
@@ -282,5 +282,5 @@
 			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 		</script>
   </body>
-  
+
 </html>

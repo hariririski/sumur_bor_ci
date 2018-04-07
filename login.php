@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <?php include('share/header.php')?>
-    <title>SITrans | login</title>
+    <title>login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -62,17 +62,17 @@
                 <input type="text" class="form-control" placeholder="user" autofocus name="user">
                 <input type="password" class="form-control" placeholder="Password"autofocus name="pas">
                 <label class="checkbox">
-                    
+
                     <span class="pull-right">
-                       
+
 
                     </span>
                 </label>
                 <button class="btn btn-lg btn-login btn-block" type="submit">Masuk</button>
-               
-                    
-                
-             
+
+
+
+
 
             </div>
 
