@@ -75,7 +75,7 @@
     </div>
 
     <!--breadcrumbs end-->
-	<center> <a href="tambah_lokasi_sumur_bor.php" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah Lokasi Sumur Bor</button><center></a>
+
    <div id="content" class="col-lg-12 col-sm-12">
             <!-- content starts -->
 
@@ -104,7 +104,7 @@
         <th>Kabupaten/Kota</th>
         <th>Kedalaman Akuifer</th>
         <th>Detail</th>
-        <th>Proses Pekerjaan</th>
+
 
     </tr>
     </thead>
@@ -141,8 +141,8 @@
                     <td class="center">'.$data['nama_kecamatan'].'</td>
                     <td class="center">'.$data['nama_kabupaten'].'</td>
                     <td class="center">'.$data['kedalaman_akuifer'].'</td>
-                    <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
-                    <td><a href="tambah_proses_kegiatan.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah</button><center></a></td>
+                    <td><a href="detail_lokasi_sumur_bor_umum.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
+                    
 
 
 

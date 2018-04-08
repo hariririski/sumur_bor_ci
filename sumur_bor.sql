@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2016 at 11:24 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.35
+-- Generation Time: Apr 08, 2018 at 09:12 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,16 +34,22 @@ CREATE TABLE `data_sumur_bor` (
   `kabupaten` int(255) NOT NULL,
   `lon` varchar(50) NOT NULL,
   `lat` varchar(50) NOT NULL,
-  `kedalaman_akuifer` varchar(255) NOT NULL
+  `kedalaman_akuifer` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `jari_jari_sumur_bor` varchar(50) NOT NULL,
+  `dokumen` varchar(255) NOT NULL,
+  `posisi_akufer` varchar(50) NOT NULL,
+  `nama_user` varchar(100) NOT NULL,
+  `ph` varchar(10) NOT NULL,
+  `ketebalan_akuifer` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_sumur_bor`
 --
 
-INSERT INTO `data_sumur_bor` (`id_sumur_bor`, `lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`) VALUES
-(1, 'Mesjid Darul Ikhsan', 2, 12, 2, '96.05675', '4.38372222', '97-106 (Pasir Kuarsa)'),
-(2, 'Pesantren Babussalam', 1, 1, 1, '96.1275', '4.1505', '70-82 (Pasir Kuarsa), 89-95 ()');
+INSERT INTO `data_sumur_bor` (`id_sumur_bor`, `lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto`, `jari_jari_sumur_bor`, `dokumen`, `posisi_akufer`, `nama_user`, `ph`, `ketebalan_akuifer`) VALUES
+(2, 'Pesantren Babussalam', 1, 1, 1, '96.1275', '4.1505', '70-82 (Pasir Kuarsa), 89-95 ()', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -63,7 +69,8 @@ CREATE TABLE `desa` (
 
 INSERT INTO `desa` (`id_desa`, `nama_desa`, `id_kecamatan`) VALUES
 (1, 'Suak Indrapuri', '1'),
-(2, 'hhhh', '12');
+(2, 'hhhh', '12'),
+(4, 'sssss', '47');
 
 -- --------------------------------------------------------
 
@@ -106,7 +113,9 @@ INSERT INTO `kabupaten` (`id_kabupaten`, `nama_kabupaten`, `logo`) VALUES
 (22, 'Kota Sabang', '0'),
 (23, 'Kota Subulussalam', '0'),
 (24, 'kamning', 'img/Screenshot (12).png'),
-(25, 'sss', 'img/Screenshot (11).png');
+(25, 'sss', 'img/Screenshot (11).png'),
+(27, 'Yuhu', 'img/1425365_0b5a83f4-e048-4b30-b654-fa2f44264227.jpg'),
+(28, 'sssssss', 'img/logo_umum.png');
 
 -- --------------------------------------------------------
 
@@ -214,7 +223,52 @@ INSERT INTO `kecamatan` (`id_kecamatan`, `nama_kecamatan`, `id_kabupaten`) VALUE
 (87, 'Kute Panang', 8),
 (88, 'Silih Nara', 8),
 (89, 'Ketol', 8),
-(90, 'Celala', 8);
+(90, 'Celala', 8),
+(92, 'Hantuuuu', 1),
+(93, 'sss', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `layer`
+--
+
+CREATE TABLE `layer` (
+  `id_layer` int(10) NOT NULL,
+  `nama_layer` varchar(100) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `nama_user` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `layer`
+--
+
+INSERT INTO `layer` (`id_layer`, `nama_layer`, `url`, `nama_user`) VALUES
+(1, 'Batas KeKabupaten', 'aaaaaaaaaaaaaaaa', 'Dian Sofyana'),
+(2, 'Alis air', '098765431234567', 'Dian Sofyana'),
+(3, 'qqqqqq', 'hhhhhhhh', 'Dian Sofyana');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proses_pengerjaan`
+--
+
+CREATE TABLE `proses_pengerjaan` (
+  `id_proses_pengerjaan` int(100) NOT NULL,
+  `nama_proses_pengerjaan` varchar(100) NOT NULL,
+  `status` int(4) NOT NULL,
+  `id_sumur_bor` int(255) NOT NULL,
+  `nama_user` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `proses_pengerjaan`
+--
+
+INSERT INTO `proses_pengerjaan` (`id_proses_pengerjaan`, `nama_proses_pengerjaan`, `status`, `id_sumur_bor`, `nama_user`) VALUES
+(1111, 'Pengukuran', 0, 2, 'Dian Sofyana');
 
 -- --------------------------------------------------------
 
@@ -234,7 +288,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `nama`) VALUES
-(1, 'haswel', 'haswel', 'hariririski');
+(1, 'haswel', 'haswel', 'hariririski'),
+(2, 'admin', 'admin', 'Dian Sofyana');
 
 --
 -- Indexes for dumped tables
@@ -265,6 +320,18 @@ ALTER TABLE `kecamatan`
   ADD PRIMARY KEY (`id_kecamatan`);
 
 --
+-- Indexes for table `layer`
+--
+ALTER TABLE `layer`
+  ADD PRIMARY KEY (`id_layer`);
+
+--
+-- Indexes for table `proses_pengerjaan`
+--
+ALTER TABLE `proses_pengerjaan`
+  ADD PRIMARY KEY (`id_proses_pengerjaan`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -283,22 +350,32 @@ ALTER TABLE `data_sumur_bor`
 -- AUTO_INCREMENT for table `desa`
 --
 ALTER TABLE `desa`
-  MODIFY `id_desa` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_desa` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
-  MODIFY `id_kabupaten` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kabupaten` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
-  MODIFY `id_kecamatan` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kecamatan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+--
+-- AUTO_INCREMENT for table `layer`
+--
+ALTER TABLE `layer`
+  MODIFY `id_layer` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `proses_pengerjaan`
+--
+ALTER TABLE `proses_pengerjaan`
+  MODIFY `id_proses_pengerjaan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1112;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

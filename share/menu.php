@@ -6,11 +6,15 @@
   <li>
     <a href="peta.php">Peta</a>
   </li>
+
   <?php
        if(!isset($_SESSION['login'])){
     ?>
     <li>
       <a href="kontak.php">Kontak</a>
+    </li>
+    <li>
+      <a href="data_lokasi_sumur_bor_umum.php">Data Sumur Bor</a>
     </li>
     <?php } ?>
     <?php

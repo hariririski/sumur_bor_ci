@@ -227,10 +227,7 @@
           </div>
     <iframe  src="perlokasi.php?lokasi=<?php echo $data['lat'].",".$data['lon'] ?>" width="100%" height="305px" scrolling="no" frameborder="0"></iframe>
 
-  <center>
-  <a href="edit_lokasi_sumur_bor.php?id=<?php echo  $data['id_sumur_bor'] ?>"><button class="btn btn-primary btn-lg">Edit</button></a>
-  <a href="proses/proses_hapus_sumur_bor.php?id=<?php echo  $data['id_sumur_bor'] ?>"><button class="btn btn-danger btn-lg">Hapus</button></a>
-  </center>
+  
   <?php
                    }
   ?>
