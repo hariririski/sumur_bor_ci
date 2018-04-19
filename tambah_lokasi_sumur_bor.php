@@ -1,70 +1,35 @@
 <?php session_start();?>
-<script language="javascript" type="text/javascript">
-  function getXMLHTTP() { //fuction to return the xml http object
-    var xmlhttp = false;
-    try {
-      xmlhttp = new XMLHttpRequest();
-    } catch (e) {
-      try {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (e) {
-        try {
-          xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e1) {
-          xmlhttp = false;
-        }
-      }
-    }
+<script type="text/javascript" src="assets/jquery_combo.js"></script> <!-- ajax-bertingkat -->
+<script>
+$(document).ready(function() {
 
-    return xmlhttp;
-  }
 
-  function getState(countryId) {
+$("#kabupaten").change(function(){
+ var kode_kabupaten = $("#kabupaten").val();
+ $.ajax({
+   type: "POST",
+   url: "proses/kecamatan.php?id="+kode_kabupaten,
+   data: "kode_kabupaten="+kode_kabupaten,
+   success: function(data){
+     $("#kecamatan").html(data);
+   }
+ });
+});
 
-    var strURL = "findState.php?country=" + countryId;
-    var req = getXMLHTTP();
+$("#kecamatan").change(function(){
+ var kode_kecamatan = $("#kecamatan").val();
+ $.ajax({
+   type: "POST",
+   url: "proses/desa.php?id="+kode_kecamatan,
+   data: "kode_kecamatan="+kode_kecamatan,
+   success: function(data){
+     $("#desa").html(data);
+   }
+ });
+});
 
-    if (req) {
 
-      req.onreadystatechange = function() {
-        if (req.readyState == 4) {
-          // only if "OK"
-          if (req.status == 200) {
-            document.getElementById('statediv').innerHTML = req.responseText;
-            document.getElementById('citydiv').innerHTML = '<select name="no_kamar" class="form-control">' +
-              '<option>Pilih Desa</option>' +
-              '</select>';
-          } else {
-            alert("Problem while using XMLHTTP:\n" + req.statusText);
-          }
-        }
-      }
-      req.open("GET", strURL, true);
-      req.send(null);
-    }
-  }
-
-  function getCity(countryId, stateId) {
-    var strURL = "findCity.php?country=" + countryId + "&state=" + stateId;
-    var req = getXMLHTTP();
-
-    if (req) {
-
-      req.onreadystatechange = function() {
-        if (req.readyState == 4) {
-          // only if "OK"
-          if (req.status == 200) {
-            document.getElementById('citydiv').innerHTML = req.responseText;
-          } else {
-            alert("Problem while using XMLHTTP:\n" + req.statusText);
-          }
-        }
-      }
-      req.open("GET", strURL, true);
-      req.send(null);
-    }
-
-  }
+});
 </script>
 
 <div class="modal-header">
@@ -77,7 +42,7 @@
     <div class="form-group">
       <label for="inputEmail3" class="col-sm-4 control-label">Nama Lokasi</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lokasi" required name="nama_transportasi">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lokasi" required name="nama_lokasi">
       </div>
     </div>
 
@@ -111,12 +76,7 @@
         <input type="text" class="form-control" id="inputPassword3" placeholder="Posisi Akuifer" required name="posisi_akuifer">
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputPassword3" class="col-sm-4 control-label">Ketebalan Akuifer</label>
-      <div class="col-sm-8">
-        <input type="text" class="form-control" id="inputPassword3" placeholder="ketebalan Akuifer" required name="ketebalan_akuifer">
-      </div>
-    </div>
+
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Jari-Jari Sumur Bor</label>
       <div class="col-sm-8">
@@ -126,13 +86,13 @@
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">PH</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="inputPassword3" placeholder="PH" required name="kedalaman_akuifer">
+        <input type="text" class="form-control" id="inputPassword3" placeholder="PH" required name="ph">
       </div>
     </div>
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Kabupaten</label>
       <div class="col-sm-8">
-        <select name="country" onChange="getState(this.value)" class="form-control">
+        <select name="kabupaten" id="kabupaten" class="form-control">
           <option>Pilih Kabupaten</option>
           <?php
                        include'maps/db.php';
@@ -153,17 +113,20 @@
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Kecamatan</label>
       <div class="col-sm-8">
-        <div id="statediv"><select name="state" class="form-control">
-      <option>Pilih Kecamatan</option>
-             </select></div>
+
+          <select name="kecamatan" id="kecamatan" class="form-control">
+              <option>Pilih Kecamatan</option>
+             </select>
       </div>
     </div>
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Desa</label>
       <div class="col-sm-8">
-        <div id="citydiv"><select name="no_kamar" class="form-control">
-      <option>Pilih Desa</option>
-             </select></div>
+
+          <select name="desa" id="desa" class="form-control">
+              <option>Pilih Desa</option>
+          </select>
+
       </div>
     </div>
     <div class="form-group">
@@ -176,7 +139,7 @@
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Dokumen</label>
       <div class="col-sm-8">
-        <input type="file" id="exampleInputFile" name='foto_sumur_bor'>
+        <input type="file" id="exampleInputFile" name='dokumen'>
 
       </div>
     </div>

@@ -150,7 +150,7 @@
        :
        </td>
        <td>
-       <?php echo $data['posis_akuifer']?>
+       <?php echo $data['posisi_akuifer']?>
 
        </td>
      </tr>
@@ -174,7 +174,7 @@
        :
        </td>
        <td>
-       <a href="dokumen/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
+       <a href="img/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
 
        </td>
      </tr>
@@ -227,7 +227,7 @@
           </div>
     <iframe  src="perlokasi.php?lokasi=<?php echo $data['lat'].",".$data['lon'] ?>" width="100%" height="305px" scrolling="no" frameborder="0"></iframe>
 
-  
+
   <?php
                    }
   ?>

@@ -74,29 +74,14 @@
               <!-- Carousel items -->
               <div class="carousel-inner">
                 <div class="active item">
-                  <img src="img/kontak/1.jpg" alt="">
+                  <img src="img/kontak/depan.png" alt="">
                   <div class="carousel-caption">
                     <p>
-                      Gedung FMIPA Unsyiah
+                      Gedung Utama
                     </p>
                   </div>
                 </div>
-                <div class="item">
-                  <img src="img/kontak/2.jpg" alt="">
-                  <div class="carousel-caption">
-                    <p>
-                      Gedung Lab Terpadu
-                    </p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="img/kontak/3.jpg" alt="">
-                  <div class="carousel-caption">
-                    <p>
-                      Gedung Lab Dasar
-                    </p>
-                  </div>
-                </div>
+
               </div>
               <!-- Carousel nav -->
               <a class="carousel-control left" href="#myCarousel" data-slide="prev">
@@ -115,9 +100,9 @@
               Info Kontak
             </h1>
             <address>
-              <p><i class="fa fa-home pr-10"></i>Alamat : Jalan T. Nyak Arief No. 195, Jeulingke, Kota Banda Aceh</p>
-              <p><i class="fa fa-globe pr-10"></i>Banda Aceh,Indonesia </p>
-              <p><i class="fa fa-mobile pr-10"></i>Phone : (0651) 7554737, 7551773</p>
+              <p><i class=""></i>Dinas Energi Dan Sumberdaya Mineral Provinsi Aceh</p>
+              <p><i class="fa fa-home pr-10"></i>Jl. T. Nyak Arief No. 195 Banda Aceh, 23114 </p>
+              <p><i class="fa fa-mobile pr-10"></i>Telp. (0651) 7551773 - 7554737 , Fax. (0651) 7553080</p>
             </address>
         </div>
       </div>

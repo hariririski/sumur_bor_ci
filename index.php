@@ -45,6 +45,18 @@
     <script src="js/respond.min.js">
     </script>
     <![endif]-->
+    <style>
+    .cd-slider li:first-of-type .image {
+    background-image: url(img/kontak/peta.png);
+
+}
+.cd-slider li:nth-of-type(3) .image {
+  background-image: url(img/kontak/peta.png);
+}
+.cd-slider li:nth-of-type(2) .image {
+  background-image: url(img/kontak/peta.png);
+}
+    </style>
   </head>
 
   <body>
@@ -55,16 +67,24 @@
     <div id="sequence">
         <div class="cd-slider-wrapper">
 		<ul class="cd-slider">
-			<li class="is-visible">
+      <li class="is-visible">
 				<div class="cd-half-block image"></div>
 
 				<div class="cd-half-block content">
 					<div>
-						<h2>Pointy Slider</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugit ullam voluptatum tenetur ab, non beatae.
-						</p>
-						<a href="https://codyhouse.co/?p=7404" class="btn">Article &amp; Download</a>
+						<h2>Selamat Datang Pada Sistem Informasi Geografis Pemetaan Letak Akuifer Di Provinsi Aceh</h2>
+
+					</div>
+				</div> <!-- .cd-half-block.content -->
+			</li>
+			<li >
+				<div class="cd-half-block image"></div>
+
+				<div class="cd-half-block content">
+					<div>
+						<h2>Peta Letak Akuifer DI Provinsi Aceh</h2>
+
+
 					</div>
 				</div>
 			</li> <!-- .cd-half-block.content -->
@@ -74,39 +94,15 @@
 
 				<div class="cd-half-block content light-bg">
 					<div>
-						<h2>Slide Number 2</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugit ullam voluptatum tenetur ab, non beatae, impedit dolorem itaque voluptates facilis necessitatibus suscipit dolor rerum dolores dignissimos alias facere sunt aliquid.
-						</p>
+						<h2>Data Sumur Bor di Provinsi Aceh</h2>
+
 					</div>
 				</div> <!-- .cd-half-block.content -->
 			</li>
 
-			<li>
-				<div class="cd-half-block image"></div>
 
-				<div class="cd-half-block content">
-					<div>
-						<h2>Slide Number 3</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugit ullam voluptatum tenetur ab, non beatae, impedit dolorem itaque voluptates facilis necessitatibus suscipit dolor rerum dolores dignissimos alias facere sunt aliquid.
-						</p>
-					</div>
-				</div> <!-- .cd-half-block.content -->
-			</li>
 
-			<li>
-				<div class="cd-half-block image"></div>
 
-				<div class="cd-half-block content">
-					<div>
-						<h2>Slide Number 4</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugit ullam voluptatum tenetur ab, non beatae, impedit dolorem itaque voluptates facilis necessitatibus suscipit dolor rerum dolores dignissimos alias facere sunt aliquid.
-						</p>
-					</div>
-				</div> <!-- .cd-half-block.content -->
-			</li>
 		</ul> <!-- .cd-slider -->
 	</div> <!-- .cd-slider-wrapper -->
 

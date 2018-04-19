@@ -1,72 +1,103 @@
 <?php
-$nama_lokasi=$_POST['nama_transportasi'];
+ session_start();
+$nama_lokasi=$_POST['nama_lokasi'];
 $lintang=$_POST['lintang'];//5.
 $bujur=$_POST['bujur']; // 95.
 $kedalaman_akuifer=$_POST['kedalaman_akuifer'];
-$nama_kabupaten=$_POST['country'];
-$nama_kecamatan=$_POST['nama_kecamatan'];
-$nama_desa=$_POST['nama_desa'];
-
-$data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBJEyzwKXH2n9SpdmUoRQqWbtvOVSLukyw&origins=$lintang,$bujur&destinations=$lintang,$bujur&language=id-ID&sensor=false");
-//$data = json_decode($data,TRUE);
-$data2=explode(":",$data);
-$data3=explode(' ',$data2[1]);
-
-print_r($data2);
-
-if(strcmp($data3[15],"Aceh")==0){
-	echo "<script type='text/javascript'>alert('Koordinat yang dimasukkan  Di".$data3[15]."');</script>";
-/*
-$foto_lokasi=basename($_FILES["foto_sumur_bor"]["name"]);
-$foto_lokasi="img/".$foto_lokasi;
-upload("foto_sumur_bor");
+$ketebalan_akuifer=$_POST['ketebalan_akuifer'];
+$posisi_akuifer=$_POST['posisi_akuifer'];
+$jari_jari_sumur_bor=$_POST['jari_jari_sumur_bor'];
+$ph=$_POST['ph'];
+$nama_kabupaten=$_POST['kabupaten'];
+$nama_kecamatan=$_POST['kecamatan'];
+$nama_desa=$_POST['desa'];
+$nama=$_SESSION['nama'];
+	list($status, $name_file1)=upload();
+	list($status, $name_file2)=upload2();
 
 		include"../maps/db.php";
-	$perintah="INSERT INTO `data_sumur_bor`(`lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto_lokasi`)
-		VALUES ('$nama_lokasi','$nama_desa','$nama_kecamatan','$nama_kabupaten','$bujur','$lintang','$kedalaman_akuifer','$foto_lokasi')";
+	echo $perintah="INSERT INTO `data_sumur_bor`(`lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto`, `jari_jari_sumur_bor`, `dokumen`, `posisi_akuifer`, `nama_user`, `ph`, `ketebalan_akuifer`)
+						 	VALUES                     ('$nama_lokasi','$nama_desa','$nama_kecamatan','$nama_kabupaten','$bujur','$lintang','$kedalaman_akuifer','$name_file1','$jari_jari_sumur_bor','$name_file2','$posisi_akuifer','$nama','$ph','$ketebalan_akuifer')";
 		$query = mysqli_query($con,$perintah);
 		if ($query) {
 				echo "<script type='text/javascript'>alert('Selamat Anda Telah menambah LokasiBaru');</script>";
 				echo '<script>document.location = "../data_lokasi_sumur_bor.php"</script>';
 		} else {
 				echo "<script type='text/javascript'>alert('Maaf Anda Gagal menambah Lokasi');</script>";
-				echo '<script>document.location = "../data_lokasi_sumur_bor.php"</script>';
+			/echo '<script>document.location = "../data_lokasi_sumur_bor.php"</script>';
 		}
-*/
-}else{
 
-	echo "<script type='text/javascript'>alert('Koordinat yang dimasukkan Bukan Di Aceh Melainkan ".$data3[15]."');</script>";
-}
+
 ?>
 
 <?php
-function upload($name){
-	$uploadDir = "../img/";
-	// Apabila ada file yang di-upload
-	if(is_uploaded_file($_FILES[$name]['tmp_name'])){
-		$uploadFile = $_FILES[$name];
-		// Extract nama file
-		$extractFile = pathinfo($uploadFile['name']);
-		$size = $_FILES[$name]['size']; //untuk mengetahui ukuran file
-		$tipe = $_FILES[$name]['type'];// untuk mengetahui tipe file
-	$sameName = 0; // Menyimpan banyaknya file dengan nama yang sama dengan file yg diupload
-	$handle = opendir($uploadDir);
-	while(false !== ($file = readdir($handle))){ // Looping isi file pada directory tujuan
-		// Apabila ada file dengan awalan yg sama dengan nama file di uplaod
-		if(strpos($file,$extractFile['filename']) !== false)
-		$sameName++; // Tambah data file yang sama
-	}
-	/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai
-	* nama ketika diupload, jika $sameName > 0 maka pakai format "namafile($sameName).ext */
-	$newName = empty($sameName) ? $uploadFile['name'] : $extractFile['filename'].'('.$sameName.').'.$extractFile['extension'];
 
-	if(move_uploaded_file($uploadFile['tmp_name'],$uploadDir.$newName)){
-		echo 'File berhasil diupload dengan nama: '.$newName;
-	}
-	else{
-		echo 'File gagal diupload';
-	}
-	}
-}
+				function upload(){
+						 $target_dir = "../img/";
+						 $target_file = $target_dir . basename($_FILES["foto_sumur_bor"]["name"]);
+						 $uploadOk = 1;
+						 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+						 // Check if image file is a actual image or fake image
+						 if(isset($_POST["submit"])) {
+								 $check = getimagesize($_FILES["foto_sumur_bor"]["tmp_name"]);
+								 if($check !== false) {
+										 $uploadOk = 1;
+								 } else {
+										 $uploadOk = 0;
+								 }
+					 }
+
+					 if ($uploadOk == 0) {
+						 return False;
+					 } else {
+
+							 $temp = explode(".", $_FILES["foto_sumur_bor"]["name"]);//untuk mengambil nama file gambarnya saja tanpa format gambarnya
+							 $nama_baru=random_name(30);
+							 $nama_baru=$nama_baru. '.' . end($temp);
+							 $temp = explode(".", $_FILES["foto_sumur_bor"]["name"]);//untuk mengambil nama file gambarnya saja tanpa format gambarnya
+							 if (move_uploaded_file($_FILES["foto_sumur_bor"]["tmp_name"], $target_dir."/" . $nama_baru)) {
+									 return array(true,$nama_baru);
+							 } else {
+										return array(False,false);
+							 }
+					 }
+				 }
+
+				 function upload2(){
+							$target_dir = "../img/";
+							$target_file = $target_dir . basename($_FILES["dokumen"]["name"]);
+							$uploadOk = 1;
+							$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+							// Check if image file is a actual image or fake image
+							if(isset($_POST["submit"])) {
+									$check = getimagesize($_FILES["dokumen"]["tmp_name"]);
+									if($check !== false) {
+											$uploadOk = 1;
+									} else {
+											$uploadOk = 0;
+									}
+						}
+
+						if ($uploadOk == 0) {
+							return False;
+						} else {
+
+								$temp = explode(".", $_FILES["dokumen"]["name"]);//untuk mengambil nama file gambarnya saja tanpa format gambarnya
+								$nama_baru=random_name(30);
+								$nama_baru=$nama_baru. '.' . end($temp);
+								$temp = explode(".", $_FILES["dokumen"]["name"]);//untuk mengambil nama file gambarnya saja tanpa format gambarnya
+								if (move_uploaded_file($_FILES["dokumen"]["tmp_name"], $target_dir."/" . $nama_baru)) {
+										return array(true,$nama_baru);
+								} else {
+										 return array(False,false);
+								}
+						}
+					}
+
+				 function random_name($length) {
+					 $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+					 $password = substr( str_shuffle( $chars ), 0, $length );
+					 return $password;
+				 }
 
 ?>

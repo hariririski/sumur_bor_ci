@@ -1,92 +1,106 @@
-	<html>
-	<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/theme.css" rel="stylesheet">
-    <link href="../css/bootstrap-reset.css" rel="stylesheet">
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
-
-    <!--external css-->
-
-    <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="../stylesheet" href="css/flexslider.css"/>
-    <link href="../assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
-    <link rel="../stylesheet" href="css/animate.css">
-    <link rel="../stylesheet" href="assets/owlcarousel/owl.carousel.css">
-    <link rel="../stylesheet" href="assets/owlcarousel/owl.theme.css">
-
-    <link href="../css/superfish.css" rel="stylesheet" media="screen">
-   
-
-
-    <!-- Custom styles for this template -->
-    <link rel="../stylesheet" type="text/css" href="css/component.css">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/style-responsive.css" rel="stylesheet" />
-	
- </head>
-</body>
+<style>
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+</style>
 <?php
-         //konfgurasi koneksi database 
-         include'db.php';
-		$id=$_GET['id'];
-		  $lokasi=$_GET['l'];
-            $tampil = "SELECT * FROM `data_sumur_bor`, kabupaten, kecamatan, desa WHERE data_sumur_bor.kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kecamatan=desa.id_kecamatan and data_sumur_bor.id_sumur_bor='$id'";
-                  $result=mysqli_query($con,$tampil);
-				// ambil nama,lat dan lon dari table lokasi
-            	while($data=mysqli_fetch_object($result)){
-            		 ?>
-             
-       	
-	<div id="content"><div id="siteNotice"></div>
-    <center><h3 id="firstHeading" class="firstHeading"><?php echo $data->lokasi ?></h3><div id="bodyContent"> </center>
-	<table>
-	<tr>
-	<td>
-	<img src="../<?php echo $data->foto_lokasi?>" width="250px" alt="" title='<?php echo $data->lokasi ?>'  >
-	</td>
-	<td>
-	<table>
-	<tr>
-	<td>
-	<p><?php echo $data->nama_desa.", ".$data->nama_kecamatan.", ".$data->nama_kabupaten?></p> 
-	</td>
-	</tr>
-	<tr>
-	<td>
-	<p>Kedalaman Akuifer <?php echo $data->kedalaman_akuifer?></p> 
-	</td>
-	</tr>
-	
-	
-					
-					</td>
-	</table>
-	
-   
-	</td>
-	<td>
-	</td>
-	</tr>
-	</table>
-	
-		
-			
-					
-			
-	
-	
-    <br>
-	
-	
-    </div></div>
-	<?php
-				}
-		?>
-		
-<script type="text/javascript">
-			$('body').on('hidden.bs.modal', '.modal', function () { $(this).removeData('bs.modal'); });
-			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
-		</script>
-</body>
-</html>
+include'../maps/db.php';
+$i=0;
+$id=$_GET['id'];
+$tampil = "SELECT * FROM `data_sumur_bor`, kabupaten, kecamatan, desa WHERE data_sumur_bor.kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kecamatan=desa.id_kecamatan and data_sumur_bor.id_sumur_bor='$id'";
+$sql = mysqli_query($con,$tampil);
+while($data = mysqli_fetch_array($sql))
+ {
+?>
+
+
+
+
+
+            <table class="table table-bordered table-striped"  width="50%">
+
+              <thead>
+                <tr>
+                  <th colspan="2">
+                    <center><img src="../img/<?php echo $data['foto'];?>" width="50%"></center>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="70px">
+                    <code>
+                      Lokasi
+                    </code>
+                  </td>
+                  <td>
+                    <?php echo $data['lokasi'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                      Alamat
+                    </code>
+                  </td>
+                  <td>
+                    <?php echo $data['nama_desa'];?>,   <?php echo $data['nama_kecamatan'];?>,<br>  <?php echo $data['nama_kabupaten'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                      Kealaman Akuifer
+                    </code>
+                  </td>
+                  <td>
+                      <?php echo $data['kedalaman_akuifer'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                     Ketebalan Akuifer
+                    </code>
+                  </td>
+                  <td>
+                    <?php echo $data['ketebalan_akuifer'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                      Posisi akuifer
+                    </code>
+                  </td>
+                  <td>
+                      <?php echo $data['posisi_akuifer'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                      Jari-Jari Sumur Bor
+                    </code>
+                  </td>
+                  <td>
+                    <?php echo $data['jari_jari_sumur_bor'];?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>
+                      pH
+                    </code>
+                  </td>
+                  <td>
+                    <?php echo $data['ph'];?>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+<?php }?>

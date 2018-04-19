@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/flexslider.css"/>
     <link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/animate.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='assets/font.css' rel='stylesheet' type='text/css'>
 
 
 

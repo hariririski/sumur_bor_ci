@@ -46,7 +46,7 @@
 			 :
 			 </td>
 			 <td>
-			 <?php echo '<img src="img/'.$data['foto_lokasi'].'" width="100%">' ?>
+			 <?php echo '<img src="img/'.$data['foto'].'" width="100%">' ?>
 			 </td>
 		 </tr>
 
@@ -150,7 +150,7 @@
        :
        </td>
        <td>
-       <?php echo $data['posis_akuifer']?>
+       <?php echo $data['posisi_akuifer']?>
 
        </td>
      </tr>
@@ -174,7 +174,7 @@
        :
        </td>
        <td>
-       <a href="dokumen/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
+       <a href="img/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
 
        </td>
      </tr>
