@@ -99,6 +99,44 @@ while($data = mysqli_fetch_array($sql))
                     <?php echo $data['ph'];?>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <code>
+                      Proses Pengerjaan
+                    </code>
+                  </td>
+                  <td>
+                    <?php
+                    $i=0;
+                    $belum=0;
+                    $sedang=0;
+                    $sudah=0;
+                    $id=$_GET['id'];
+                    $tampil = "SELECT * FROM `proses_pengerjaan` where id_sumur_bor='$id'";
+                    $sql = mysqli_query($con,$tampil);
+                    while($data = mysqli_fetch_array($sql))
+                     {
+                       $i++;
+                       if($data['status']==0){
+                         $belum++;
+                       }else if($data['status']==1){
+                         $sedang++;
+                       }else if($data['status']==2){
+                         $selesai++;
+                       }
+                     }
+                     
+
+                     echo "Total Pengerjaan : ".$i;
+                     echo "<br>";
+                     echo "Belum Dikerjakan : ".$belum;
+                     echo "<br>";
+                     echo "Sedang Dikerjakan : ".$sedang;
+                     echo "<br>";
+                     echo "Selesai Dikerjakan : ".$sudah;
+                    ?>
+                  </td>
+                </tr>
               </tbody>
             </table>
 
