@@ -142,7 +142,7 @@
                     <td class="center">'.$data['nama_kabupaten'].'</td>
                     <td class="center">'.$data['kedalaman_akuifer'].'</td>
                     <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
-                    <td><a href="tambah_proses_kegiatan.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah</button><center></a></td>
+                    <td><a href="tambah_proses_kegiatan.php?id='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah</button><center></a></td>
 
 
 
