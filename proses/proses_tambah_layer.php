@@ -13,11 +13,11 @@ $nama=$_SESSION['nama'];
 
 
 				echo "<script type='text/javascript'>alert('Selamat Anda Telah menambah Layer Baru');</script>";
-				echo '<script>document.location = "../data_layer.php?id=kabupaten"</script>';
+				echo '<script>document.location = "../data_layer.php"</script>';
 
 			} else {
 				echo "<script type='text/javascript'>alert('Maaf Anda Gagal Layer');</script>";
-				echo '<script>document.location = "../data_layer.php?id=kabupaten"</script>';
+				echo '<script>document.location = "../data_layer.php"</script>';
 			}
 
 

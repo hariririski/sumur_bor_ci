@@ -98,7 +98,8 @@
         <th>No</th>
         <th>Nama Layer</th>
         <th>URL</th>
-        <th>Edit Hapus</th>
+        <th>Edit</th>
+        <th>Hapus</th>
 
     </tr>
     </thead>
@@ -117,7 +118,8 @@
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['nama_layer'].'</td>
                     <td class="center">'.$data['url'].'</td>
-                    <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
+                    <td><a href="proses/edit_layer.php?id='.$data['id_layer'].'"><button class="btn btn-warning btn-lg">Edit</button><center></a></td>
+                    <td><a href="proses/proses_hapus_layer.php?id='.$data['id_layer'].'"><button class="btn btn-danger btn-lg">Hapus</button><center></a></td>
 
 
 

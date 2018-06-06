@@ -93,14 +93,14 @@ $id=$_GET['id'];
               <?php }?>
 
               <?php if($data1['status']==2){?>
-                
+
               <?php }else{?>
                   <a href=""><button class="btn btn-success btn-sm" >Selesai</button></a>
               <?php }?>
 
               </td>
               <td>
-                <a href="?id=<?php echo $data1['id_proses_pengerjaan']?>"><button class="btn btn-danger btn-sm">Hapus</button></a>
+                <a href="proses/proses_hapus_pengerjaan.php?id=<?php echo $data1['id_proses_pengerjaan']?>"><button class="btn btn-danger btn-sm">Hapus</button></a>
 
               </td>
             </tr>
