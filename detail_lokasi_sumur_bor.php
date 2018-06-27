@@ -108,7 +108,7 @@
 		 </tr>
 		 <tr>
 			 <td>
-			 PH
+			 pH
 			 </td>
 			 <td>
 			 :
