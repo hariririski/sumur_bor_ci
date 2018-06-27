@@ -113,7 +113,7 @@
 	include('modala.php');
                   include'maps/db.php';
                   $i=0;
-                  $tampil = "SELECT * FROM `data_sumur_bor`, kabupaten, kecamatan, desa WHERE data_sumur_bor.kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kecamatan=desa.id_kecamatan";
+                  $tampil = "SELECT * FROM data_sumur_bor LEFT join desa on desa.id_desa=data_sumur_bor.desa LEFT JOIN kecamatan on kecamatan.id_kecamatan=data_sumur_bor.kecamatan left join kabupaten on kabupaten.id_kabupaten=data_sumur_bor.kabupaten";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
                    {
