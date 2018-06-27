@@ -71,7 +71,7 @@ function getXMLHTTP() { //fuction to return the xml http object
 
     <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h4 class="modal-title">Tambah Layer</h4>
+  <h4 class="modal-title">Tambah Desa</h4>
 </div>
 <div class="modal-body">
 

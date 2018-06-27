@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2018 at 09:12 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Generation Time: Jun 25, 2018 at 08:54 AM
+-- Server version: 5.6.25
+-- PHP Version: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `data_sumur_bor`
 --
 
-CREATE TABLE `data_sumur_bor` (
+CREATE TABLE IF NOT EXISTS `data_sumur_bor` (
   `id_sumur_bor` int(255) NOT NULL,
   `lokasi` varchar(255) NOT NULL,
   `desa` int(255) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `data_sumur_bor` (
   `nama_user` varchar(100) NOT NULL,
   `ph` varchar(10) NOT NULL,
   `ketebalan_akuifer` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_sumur_bor`
@@ -57,11 +57,11 @@ INSERT INTO `data_sumur_bor` (`id_sumur_bor`, `lokasi`, `desa`, `kecamatan`, `ka
 -- Table structure for table `desa`
 --
 
-CREATE TABLE `desa` (
+CREATE TABLE IF NOT EXISTS `desa` (
   `id_desa` int(255) NOT NULL,
   `nama_desa` varchar(255) NOT NULL,
   `id_kecamatan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `desa`
@@ -78,11 +78,11 @@ INSERT INTO `desa` (`id_desa`, `nama_desa`, `id_kecamatan`) VALUES
 -- Table structure for table `kabupaten`
 --
 
-CREATE TABLE `kabupaten` (
+CREATE TABLE IF NOT EXISTS `kabupaten` (
   `id_kabupaten` int(255) NOT NULL,
   `nama_kabupaten` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kabupaten`
@@ -123,11 +123,11 @@ INSERT INTO `kabupaten` (`id_kabupaten`, `nama_kabupaten`, `logo`) VALUES
 -- Table structure for table `kecamatan`
 --
 
-CREATE TABLE `kecamatan` (
+CREATE TABLE IF NOT EXISTS `kecamatan` (
   `id_kecamatan` int(255) NOT NULL,
   `nama_kecamatan` varchar(255) NOT NULL,
   `id_kabupaten` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kecamatan`
@@ -233,12 +233,12 @@ INSERT INTO `kecamatan` (`id_kecamatan`, `nama_kecamatan`, `id_kabupaten`) VALUE
 -- Table structure for table `layer`
 --
 
-CREATE TABLE `layer` (
+CREATE TABLE IF NOT EXISTS `layer` (
   `id_layer` int(10) NOT NULL,
   `nama_layer` varchar(100) NOT NULL,
   `url` varchar(255) NOT NULL,
   `nama_user` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `layer`
@@ -255,13 +255,13 @@ INSERT INTO `layer` (`id_layer`, `nama_layer`, `url`, `nama_user`) VALUES
 -- Table structure for table `proses_pengerjaan`
 --
 
-CREATE TABLE `proses_pengerjaan` (
+CREATE TABLE IF NOT EXISTS `proses_pengerjaan` (
   `id_proses_pengerjaan` int(100) NOT NULL,
   `nama_proses_pengerjaan` varchar(100) NOT NULL,
   `status` int(4) NOT NULL,
   `id_sumur_bor` int(255) NOT NULL,
   `nama_user` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1112 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proses_pengerjaan`
@@ -276,19 +276,18 @@ INSERT INTO `proses_pengerjaan` (`id_proses_pengerjaan`, `nama_proses_pengerjaan
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(255) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nama` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `nama`) VALUES
-(1, 'haswel', 'haswel', 'hariririski'),
 (2, 'admin', 'admin', 'Dian Sofyana');
 
 --
@@ -345,37 +344,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data_sumur_bor`
 --
 ALTER TABLE `data_sumur_bor`
-  MODIFY `id_sumur_bor` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sumur_bor` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `desa`
 --
 ALTER TABLE `desa`
-  MODIFY `id_desa` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_desa` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
-  MODIFY `id_kabupaten` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_kabupaten` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
-  MODIFY `id_kecamatan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_kecamatan` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=94;
 --
 -- AUTO_INCREMENT for table `layer`
 --
 ALTER TABLE `layer`
-  MODIFY `id_layer` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_layer` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `proses_pengerjaan`
 --
 ALTER TABLE `proses_pengerjaan`
-  MODIFY `id_proses_pengerjaan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1112;
+  MODIFY `id_proses_pengerjaan` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1112;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
