@@ -2,13 +2,13 @@
 <?php
 					$id=$_GET['id'];
                   include'maps/db.php';
-                  $i=0; 
-                  $tampil2 = "SELECT * FROM `data_sumur_bor`, kabupaten, kecamatan, desa WHERE data_sumur_bor.kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kabupaten=kabupaten.Id_kabupaten and kecamatan.id_kecamatan=desa.id_kecamatan and data_sumur_bor.id_sumur_bor='$id'";
+                  $i=0;
+                  $tampil2 = "SELECT * FROM data_sumur_bor LEFT join desa on desa.id_desa=data_sumur_bor.desa LEFT JOIN kecamatan on kecamatan.id_kecamatan=data_sumur_bor.kecamatan left join kabupaten on kabupaten.id_kabupaten=data_sumur_bor.kabupaten where data_sumur_bor.id_sumur_bor='$id'";
                   $sql2 = mysqli_query($con,$tampil2);
                   while($data2 = mysqli_fetch_array($sql2))
                    {
-                  
-                   
+
+
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +30,12 @@
 
 <script language="javascript" type="text/javascript">
 function getXMLHTTP() { //fuction to return the xml http object
-		var xmlhttp=false;	
+		var xmlhttp=false;
 		try{
 			xmlhttp=new XMLHttpRequest();
 		}
-		catch(e)	{		
-			try{			
+		catch(e)	{
+			try{
 				xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
 			}
 			catch(e){
@@ -47,54 +47,54 @@ function getXMLHTTP() { //fuction to return the xml http object
 				}
 			}
 		}
-		 	
+
 		return xmlhttp;
     }
-	
-	function getState(countryId) {		
-		
+
+	function getState(countryId) {
+
 		var strURL="findState.php?country="+countryId;
 		var req = getXMLHTTP();
-		
+
 		if (req) {
-			
+
 			req.onreadystatechange = function() {
 				if (req.readyState == 4) {
 					// only if "OK"
-					if (req.status == 200) {						
+					if (req.status == 200) {
 						document.getElementById('statediv').innerHTML=req.responseText;
 						document.getElementById('citydiv').innerHTML='<select name="no_kamar" class="form-control">'+
 						'<option>Pilih Desa</option>'+
-				        '</select>';						
+				        '</select>';
 					} else {
 						alert("Problem while using XMLHTTP:\n" + req.statusText);
 					}
-				}				
-			}			
-			req.open("GET", strURL, true);
-			req.send(null);
-		}		
-	}
-	function getCity(countryId,stateId) {		
-		var strURL="findCity.php?country="+countryId+"&state="+stateId;
-		var req = getXMLHTTP();
-		
-		if (req) {
-			
-			req.onreadystatechange = function() {
-				if (req.readyState == 4) {
-					// only if "OK"
-					if (req.status == 200) {						
-						document.getElementById('citydiv').innerHTML=req.responseText;						
-					} else {
-						alert("Problem while using XMLHTTP:\n" + req.statusText);
-					}
-				}				
-			}			
+				}
+			}
 			req.open("GET", strURL, true);
 			req.send(null);
 		}
-				
+	}
+	function getCity(countryId,stateId) {
+		var strURL="findCity.php?country="+countryId+"&state="+stateId;
+		var req = getXMLHTTP();
+
+		if (req) {
+
+			req.onreadystatechange = function() {
+				if (req.readyState == 4) {
+					// only if "OK"
+					if (req.status == 200) {
+						document.getElementById('citydiv').innerHTML=req.responseText;
+					} else {
+						alert("Problem while using XMLHTTP:\n" + req.statusText);
+					}
+				}
+			}
+			req.open("GET", strURL, true);
+			req.send(null);
+		}
+
 	}
 </script>
 
@@ -122,7 +122,7 @@ function getXMLHTTP() { //fuction to return the xml http object
                 <div class="col-lg-4 col-sm-4">
                     <h1>EDIT</h1>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -134,11 +134,11 @@ function getXMLHTTP() { //fuction to return the xml http object
             <!-- Forms
 ================================================== -->
 <div class="bs-docs-section mar-b-30">
-  
+
 
 
   <h2 id="forms-horizontal">Edit lokasi Sumur Bor</h2>
-  
+
   <div class="bs-callout bs-callout-info">
     <form class="form-horizontal" role="form" action="proses/proses_edit_lokasi_sumur_bor.php" method="POST" enctype="multipart/form-data">
 	<div class="form-group">
@@ -153,7 +153,7 @@ function getXMLHTTP() { //fuction to return the xml http object
           <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lokasi" value="<?php echo $data2['lokasi']?>" required name="nama_transportasi">
         </div>
       </div>
-	 
+
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Lintang</label>
         <div class="col-sm-10">
@@ -172,16 +172,16 @@ function getXMLHTTP() { //fuction to return the xml http object
           <input type="text" class="form-control" id="inputPassword3" placeholder="kedalaman_akuifer" required name="kedalaman_akuifer" value="<?php echo $data2['kedalaman_akuifer']?>">
         </div>
       </div>
-	   
-	 
+
+
 	   <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Kabupaten</label>
         <div class="col-sm-10">
           <select name="nama_kabupaten" onChange="getState(this.value)" class="form-control" >
-		  
+
 			<?php
                   include'maps/db.php';
-                  $i=0; 
+                  $i=0;
 				   echo "<option value='$data2[id_kabupaten]' selected>$data2[nama_kabupaten]</option>";
                   $tampil = "SELECT * from kabupaten";
                   $sql = mysqli_query($con,$tampil);
@@ -189,10 +189,10 @@ function getXMLHTTP() { //fuction to return the xml http object
                    {
                    $i++;
                    echo "<option value='$data[id_kabupaten]'>$data[nama_kabupaten]</option>";
-                 
+
                    }
 					?>
-    
+
 		  </select>
         </div>
       </div>
@@ -200,10 +200,10 @@ function getXMLHTTP() { //fuction to return the xml http object
         <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
         <div class="col-sm-10">
           <select name="nama_kecamatan" onChange="getState(this.value)" class="form-control" >
-		  
+
 			<?php
                   include'maps/db.php';
-                  $i=0; 
+                  $i=0;
 				     echo "<option value='$data2[id_kecamatan]'>$data2[nama_kecamatan]</option>";
                   $tampil = "SELECT * from kecamatan";
                   $sql = mysqli_query($con,$tampil);
@@ -214,7 +214,7 @@ function getXMLHTTP() { //fuction to return the xml http object
 					}
                    }
 					?>
-    
+
 		  </select>
         </div>
       </div>
@@ -222,10 +222,10 @@ function getXMLHTTP() { //fuction to return the xml http object
         <label for="inputPassword3" class="col-sm-2 control-label">Desa</label>
         <div class="col-sm-10">
           <select name="nama_desa" onChange="getState(this.value)" class="form-control" >
-		  
+
 			<?php
                   include'maps/db.php';
-                  $i=0; 
+                  $i=0;
 				   echo "<option value='$data2[id_desa]' selected>$data2[nama_desa]</option>";
                   $tampil = "SELECT * from desa";
                   $sql = mysqli_query($con,$tampil);
@@ -233,10 +233,10 @@ function getXMLHTTP() { //fuction to return the xml http object
                    {
                    $i++;
                    echo "<option value='$data[id_desa]'>$data[nama_desa]</option>";
-                 
+
                    }
 					?>
-    
+
 		  </select>
         </div>
       </div>
@@ -245,10 +245,10 @@ function getXMLHTTP() { //fuction to return the xml http object
         <label for="inputPassword3" class="col-sm-2 control-label">Upload Foto</label>
         <div class="col-sm-10">
            <input type="file" id="exampleInputFile" name='foto_sumur_bor'>
-       
+
         </div>
       </div>
-	    
+
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Tambah</button>
