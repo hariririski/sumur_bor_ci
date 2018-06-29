@@ -95,7 +95,7 @@
         <th>No</th>
         <th>Username</th>
         <th>Nama lengkap</th>
-        <th>Hapus</th>
+        <!-- <th>Hapus</th> -->
 
 
 
@@ -119,15 +119,6 @@
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['username'].'</td>
                     <td class="center">'.$data['nama'].'</td>
-
-				   <td width="50px">
-					<a href="proses/proses_hapus_admin.php?id='.$data['id'].'"><button class="btn btn-danger ">Hapus</button></a>
-                    </td>
-
-
-
-
-
                   </tr>
                   ';
                    }
