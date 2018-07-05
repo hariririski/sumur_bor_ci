@@ -5,7 +5,7 @@ $lintang=$_POST['lintang'];//5.
 $bujur=$_POST['bujur']; // 95.
 $kedalaman_akuifer=$_POST['kedalaman_akuifer'];
 $ketebalan_akuifer=$_POST['ketebalan_akuifer'];
-$posisi_akuifer=$_POST['posisi_akuifer'];
+
 $jari_jari_sumur_bor=$_POST['jari_jari_sumur_bor'];
 $ph=$_POST['ph'];
 $nama_kabupaten=$_POST['kabupaten'];
@@ -16,8 +16,8 @@ $nama=$_SESSION['nama'];
 	list($status, $name_file2)=upload2();
 
 		include"../maps/db.php";
-	  $perintah="INSERT INTO `data_sumur_bor`(`lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto`, `jari_jari_sumur_bor`, `dokumen`, `posisi_akuifer`, `nama_user`, `ph`, `ketebalan_akuifer`)
-						 	VALUES ('$nama_lokasi','$nama_desa','$nama_kecamatan','$nama_kabupaten','$bujur','$lintang','$kedalaman_akuifer','$name_file1','$jari_jari_sumur_bor','$name_file2','$posisi_akuifer','$nama','$ph','$ketebalan_akuifer')";
+	  $perintah="INSERT INTO `data_sumur_bor`(`lokasi`, `desa`, `kecamatan`, `kabupaten`, `lon`, `lat`, `kedalaman_akuifer`, `foto`, `jari_jari_sumur_bor`, `dokumen`, `nama_user`, `ph`, `ketebalan_akuifer`)
+						 	VALUES ('$nama_lokasi','$nama_desa','$nama_kecamatan','$nama_kabupaten','$bujur','$lintang','$kedalaman_akuifer','$name_file1','$jari_jari_sumur_bor','$name_file2','$nama','$ph','$ketebalan_akuifer')";
 		$query = mysqli_query($con,$perintah);
 		if ($query) {
 				echo "<script type='text/javascript'>alert('Selamat Anda Telah menambah LokasiBaru');</script>";

@@ -70,12 +70,7 @@ $("#kecamatan").change(function(){
         <input type="text" class="form-control" id="inputPassword3" placeholder="ketebalan Akuifer" required name="ketebalan_akuifer">
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputPassword3" class="col-sm-4 control-label">Posisi Akuifer</label>
-      <div class="col-sm-8">
-        <input type="text" class="form-control" id="inputPassword3" placeholder="Posisi Akuifer" required name="posisi_akuifer">
-      </div>
-    </div>
+    
 
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Jari-Jari Sumur Bor</label>

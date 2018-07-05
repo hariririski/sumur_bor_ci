@@ -142,18 +142,7 @@
 
        </td>
      </tr>
-     <tr>
-       <td>
-       Posisi Akuifer
-       </td>
-       <td>
-       :
-       </td>
-       <td>
-       <?php echo $data['posisi_akuifer']?>
-
-       </td>
-     </tr>
+     
      <tr>
        <td>
        Jari-Jari Sumur Bor
