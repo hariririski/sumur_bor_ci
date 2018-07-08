@@ -142,7 +142,7 @@
 
        </td>
      </tr>
-     
+
      <tr>
        <td>
        Jari-Jari Sumur Bor
@@ -163,8 +163,11 @@
        :
        </td>
        <td>
-       <a href="img/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
-
+       <?php if(!empty($data['dokumen'])){?>
+          <a href="img/<?php echo $data['dokumen']?>"><button class="btn-info">Download</button></a>
+       <?php }else{
+         
+       } ?>
        </td>
      </tr>
    </table>
