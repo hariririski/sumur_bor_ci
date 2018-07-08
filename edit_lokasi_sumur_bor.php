@@ -97,6 +97,38 @@ function getXMLHTTP() { //fuction to return the xml http object
 
 	}
 </script>
+<script type="text/javascript" src="assets/jquery_combo.js"></script> <!-- ajax-bertingkat -->
+<script>
+$(document).ready(function() {
+
+
+$("#kabupaten").change(function(){
+ var kode_kabupaten = $("#kabupaten").val();
+ $.ajax({
+   type: "POST",
+   url: "proses/kecamatan.php?id="+kode_kabupaten,
+   data: "kode_kabupaten="+kode_kabupaten,
+   success: function(data){
+     $("#kecamatan").html(data);
+   }
+ });
+});
+
+$("#kecamatan").change(function(){
+ var kode_kecamatan = $("#kecamatan").val();
+ $.ajax({
+   type: "POST",
+   url: "proses/desa.php?id="+kode_kecamatan,
+   data: "kode_kecamatan="+kode_kecamatan,
+   success: function(data){
+     $("#desa").html(data);
+   }
+ });
+});
+
+
+});
+</script>
 
       <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="css/component.css">
@@ -140,7 +172,7 @@ function getXMLHTTP() { //fuction to return the xml http object
   <h2 id="forms-horizontal">Edit lokasi Sumur Bor</h2>
 
   <div class="bs-callout bs-callout-info">
-    <form class="form-horizontal" role="form" action="proses/proses_edit_lokasi_sumur_bor.php" method="POST" enctype="multipart/form-data">
+    <form class="form-horizontal" role="form" action="proses/proses_edit_lokasi_sumur_bor.php?id=<?php echo $id?>" method="POST" enctype="multipart/form-data">
 	<div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Id Lokasi Sumur Bor</label>
         <div class="col-sm-10">
@@ -150,7 +182,7 @@ function getXMLHTTP() { //fuction to return the xml http object
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Nama Lokasi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lokasi" value="<?php echo $data2['lokasi']?>" required name="nama_transportasi">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lokasi" value="<?php echo $data2['lokasi']?>" required name="nama_lokasi">
         </div>
       </div>
 
@@ -194,7 +226,7 @@ function getXMLHTTP() { //fuction to return the xml http object
 	   <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Kabupaten</label>
         <div class="col-sm-10">
-          <select name="nama_kabupaten" onChange="getState(this.value)" class="form-control" >
+        <select name="kabupaten" id="kabupaten" class="form-control">
 
 			<?php
                   include'maps/db.php';
@@ -205,8 +237,9 @@ function getXMLHTTP() { //fuction to return the xml http object
                   while($data = mysqli_fetch_array($sql))
                    {
                    $i++;
+									 if($data[id_kabupaten]!=$data2[id_kabupaten]){
                    echo "<option value='$data[id_kabupaten]'>$data[nama_kabupaten]</option>";
-
+								 }
                    }
 					?>
 
@@ -216,19 +249,19 @@ function getXMLHTTP() { //fuction to return the xml http object
 	   <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
         <div class="col-sm-10">
-          <select name="nama_kecamatan" onChange="getState(this.value)" class="form-control" >
+        <select name="kecamatan" id="kecamatan" class="form-control">
 
 			<?php
                   include'maps/db.php';
                   $i=0;
 				     echo "<option value='$data2[id_kecamatan]'>$data2[nama_kecamatan]</option>";
-                  $tampil = "SELECT * from kecamatan";
+                  $tampil = "SELECT * from kecamatan left join kabupaten on kabupaten.id_kabupaten=kecamatan.id_kecamatan where kabupaten.id_kabupaten='$data2[id_kabupaten]'";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
                    {
                     if($data2['id_kecamatan']!=$data['id_kecamatan']){
                    echo "<option value='$data[id_kecamatan]'>$data[nama_kecamatan]</option>";
-					}
+								 	}
                    }
 					?>
 
@@ -238,19 +271,20 @@ function getXMLHTTP() { //fuction to return the xml http object
 	   <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Desa</label>
         <div class="col-sm-10">
-          <select name="nama_desa" onChange="getState(this.value)" class="form-control" >
+          <select name="desa" id="desa" class="form-control">
 
 			<?php
                   include'maps/db.php';
                   $i=0;
-				   echo "<option value='$data2[id_desa]' selected>$data2[nama_desa]</option>";
-                  $tampil = "SELECT * from desa";
+				   			echo "<option value='$data2[id_desa]' selected>$data2[nama_desa]</option>";
+                  $tampil = "SELECT * from desa left join kecamatan on kecamatan.id_kecamatan=desa.id_kecamatan where kecamatan.id_kecamatan='$data2[id_kecamatan]'";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
                    {
                    $i++;
+									 if($data[id_desa]!=$data2[id_desa]){
                    echo "<option value='$data[id_desa]'>$data[nama_desa]</option>";
-
+								 	}
                    }
 					?>
 
@@ -261,8 +295,10 @@ function getXMLHTTP() { //fuction to return the xml http object
 
 				<label for="inputPassword3" class="col-sm-2 control-label">Upload Foto</label>
 				<div class="col-sm-10">
-					<input type="file" id="exampleInputFile" name='foto_sumur_bor'>
+					<input type="file" id="exampleInputFile" name='foto_sumur_bor' value="<?php echo $data2['foto']?>">
+
 						<?php if(!empty($data2['foto'])){?>
+								<input  id="exampleInputFile" name='foto_sumur_bor' hidden value="<?php echo $data2['foto']?>">
 								<img src="img/<?php echo $data2['foto']?>" width="30%">
 						<?php } ?>
 				</div>
@@ -271,17 +307,19 @@ function getXMLHTTP() { //fuction to return the xml http object
 
 				<label for="inputPassword3" class="col-sm-2 control-label">Dokumen</label>
 				<div class="col-sm-10">
-					<input type="file" id="exampleInputFile" name='dokumen'>
-					<?php if(!empty($data['dokumen'])){?>
+					<input type="file" id="exampleInputFile" name='dokumen' >
+
+					<?php if(!empty($data2['dokumen'])){?>
+						<input id="exampleInputFile" hidden name='dokumen' value="<?php echo $data2['dokumen']?>">
 						<a href="img/<?php echo $data2['dokumen']?>" class="btn btn-primary">Download Dokumen</a>
-						<label><?php echo $data['dokumen']?></label>
+						<label><?php echo $data2['dokumen']?></label>
 						<?php } ?>
 				</div>
 			</div>
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Tambah</button>
+          <button type="submit" class="btn btn-success">Perharui</button>
         </div>
       </div>
     </form>
