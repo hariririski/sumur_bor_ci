@@ -103,7 +103,7 @@ function getXMLHTTP() { //fuction to return the xml http object
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!-- HTML5 shim and Respond.js IE10 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -167,12 +167,29 @@ function getXMLHTTP() { //fuction to return the xml http object
         </div>
       </div>
 	   <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">Kealaman Akuifer</label>
+        <label for="inputPassword3" class="col-sm-2 control-label">Kedalaman Akuifer</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputPassword3" placeholder="kedalaman_akuifer" required name="kedalaman_akuifer" value="<?php echo $data2['kedalaman_akuifer']?>">
         </div>
       </div>
-
+			<div class="form-group">
+	      <label for="inputPassword3" class="col-sm-2 control-label">Ketebalan Akuifer</label>
+	      <div class="col-sm-10">
+	        <input type="text" class="form-control" id="inputPassword3" placeholder="ketebalan Akuifer" required name="ketebalan_akuifer" value="<?php echo $data2['ketebalan_akuifer']?>">
+	      </div>
+	    </div>
+			<div class="form-group">
+	      <label for="inputPassword3" class="col-sm-2 control-label">Jari-Jari Sumur Bor</label>
+	      <div class="col-sm-10">
+	        <input type="text" class="form-control" id="inputPassword3" placeholder="Jari-Jari Sumur Bor" required name="jari_jari_sumur_bor" value="<?php echo $data2['jari_jari_sumur_bor']?>">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="inputPassword3" class="col-sm-2 control-label">PH</label>
+	      <div class="col-sm-10">
+	        <input type="text" class="form-control" id="inputPassword3" placeholder="PH" required name="ph"value="<?php echo $data2['ph']?>">
+	      </div>
+	    </div>
 
 	   <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Kabupaten</label>
@@ -182,7 +199,7 @@ function getXMLHTTP() { //fuction to return the xml http object
 			<?php
                   include'maps/db.php';
                   $i=0;
-				   echo "<option value='$data2[id_kabupaten]' selected>$data2[nama_kabupaten]</option>";
+				   				echo "<option value='$data2[id_kabupaten]' selected>$data2[nama_kabupaten]</option>";
                   $tampil = "SELECT * from kabupaten";
                   $sql = mysqli_query($con,$tampil);
                   while($data = mysqli_fetch_array($sql))
@@ -240,14 +257,27 @@ function getXMLHTTP() { //fuction to return the xml http object
 		  </select>
         </div>
       </div>
-       <div class="form-group">
-	   <img src="<?php echo $data2['foto_lokasi']?>" width="30%">
-        <label for="inputPassword3" class="col-sm-2 control-label">Upload Foto</label>
-        <div class="col-sm-10">
-           <input type="file" id="exampleInputFile" name='foto_sumur_bor'>
+			<div class="form-group">
 
-        </div>
-      </div>
+				<label for="inputPassword3" class="col-sm-2 control-label">Upload Foto</label>
+				<div class="col-sm-10">
+					<input type="file" id="exampleInputFile" name='foto_sumur_bor'>
+						<?php if(!empty($data2['foto'])){?>
+								<img src="img/<?php echo $data2['foto']?>" width="30%">
+						<?php } ?>
+				</div>
+			</div>
+			<div class="form-group">
+
+				<label for="inputPassword3" class="col-sm-2 control-label">Dokumen</label>
+				<div class="col-sm-10">
+					<input type="file" id="exampleInputFile" name='dokumen'>
+					<?php if(!empty($data['dokumen'])){?>
+						<a href="img/<?php echo $data2['dokumen']?>" class="btn btn-primary">Download Dokumen</a>
+						<label><?php echo $data['dokumen']?></label>
+						<?php } ?>
+				</div>
+			</div>
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

@@ -59,7 +59,7 @@ $("#kecamatan").change(function(){
       </div>
     </div>
     <div class="form-group">
-      <label for="inputPassword3" class="col-sm-4 control-label">Kealaman Akuifer</label>
+      <label for="inputPassword3" class="col-sm-4 control-label">Kedalaman Akuifer</label>
       <div class="col-sm-8">
         <input type="text" class="form-control" id="inputPassword3" placeholder="kedalaman Akuifer" required name="kedalaman_akuifer">
       </div>
@@ -70,7 +70,7 @@ $("#kecamatan").change(function(){
         <input type="text" class="form-control" id="inputPassword3" placeholder="ketebalan Akuifer" required name="ketebalan_akuifer">
       </div>
     </div>
-    
+
 
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-4 control-label">Jari-Jari Sumur Bor</label>

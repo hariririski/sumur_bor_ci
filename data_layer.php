@@ -118,7 +118,7 @@
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['nama_layer'].'</td>
                     <td class="center">'.$data['url'].'</td>
-                    <td><a href="proses/edit_layer.php?id='.$data['id_layer'].'"><button class="btn btn-warning btn-lg">Edit</button><center></a></td>
+                    <td><a href="edit_layer.php?id='.$data['id_layer'].'" data-toggle="modal" data-target="#myModal" ><button class="btn btn-warning btn-lg">Edit</button><center></a></td>
                     <td><a href="proses/proses_hapus_layer.php?id='.$data['id_layer'].'"><button class="btn btn-danger btn-lg">Hapus</button><center></a></td>
 
 
