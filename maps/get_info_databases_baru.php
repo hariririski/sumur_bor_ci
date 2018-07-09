@@ -69,16 +69,7 @@ while($data = mysqli_fetch_array($sql))
                     <?php echo $data['ketebalan_akuifer'];?>
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    <code>
-                      Posisi akuifer
-                    </code>
-                  </td>
-                  <td>
-                      <?php echo $data['posisi_akuifer'];?>
-                  </td>
-                </tr>
+                
                 <tr>
                   <td>
                     <code>
@@ -125,7 +116,7 @@ while($data = mysqli_fetch_array($sql))
                          $selesai++;
                        }
                      }
-                     
+
 
                      echo "Total Pengerjaan : ".$i;
                      echo "<br>";
