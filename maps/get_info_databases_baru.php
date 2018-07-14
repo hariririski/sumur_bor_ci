@@ -52,7 +52,7 @@ while($data = mysqli_fetch_array($sql))
                 <tr>
                   <td>
                     <code>
-                      Kealaman Akuifer
+                      Kedalaman Akuifer
                     </code>
                   </td>
                   <td>
@@ -69,7 +69,7 @@ while($data = mysqli_fetch_array($sql))
                     <?php echo $data['ketebalan_akuifer'];?>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td>
                     <code>
@@ -124,7 +124,7 @@ while($data = mysqli_fetch_array($sql))
                      echo "<br>";
                      echo "Sedang Dikerjakan : ".$sedang;
                      echo "<br>";
-                     echo "Selesai Dikerjakan : ".$sudah;
+                     echo "Selesai Dikerjakan : ".$selesai;
                     ?>
                   </td>
                 </tr>
