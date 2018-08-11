@@ -104,34 +104,7 @@
 
                      <div>
 
-                         Legenda
-                         <div class="example-wrap">
-                           <div class="row">
-
-                         <?php
-                               //konfgurasi koneksi database
-                               include'db.php';
-                                  	$sql_lokasi="SELECT * FROM kabupaten";
-                                  	$result=mysqli_query($con,$sql_lokasi);
-                                    $i++;
-                                  	while($data=mysqli_fetch_object($result)){
-                                  		 ?>
-                            <div class="col-lg-4">
-                              <ul class="tag">
-                                <li>
-                                  <a href="#" style="font-size:12px;">
-                                    <i class="fa fa-square pr-3" style="font-size:20px;color:#96eba1">
-                                    </i>
-                                    <?php echo $data->nama_kabupaten?>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                              <?php
-                               }
-                           ?>
-                     </div>
-                     </div>
+                      <img src="legenda.png" width="93%">
                      </div>
 
                    </div>
