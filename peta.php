@@ -60,7 +60,7 @@
     <!--container start-->
     <div class="component-bg">
         <div class="container mar-b-30">
-           
+
             <div class="row">
             </div>
         </div>
@@ -68,10 +68,10 @@
     <!--container end-->
 	 <center><h1>Peta Sumur Bor </h1></center>
 	  <div class="col-lg-12 ">
-  <iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
+  <iframe class="animated fadeInDown wow" src="maps/peta.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
   </div>
-  
-  
+
+
      <!--footer start-->
     <?php include'share/footer.php';?>
   <!-- js placed at the end of the document so the pages load faster -->
