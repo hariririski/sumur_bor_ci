@@ -161,7 +161,7 @@ var markers1 = [
              while($data=mysqli_fetch_object($result)){
                $data2=$data->id_sumur_bor;
     ?>
-            ['<?php echo $data->id_sumur_bor;?>', 'title',<?php echo $data->lat;?>, <?php echo $data->lon;?>,<?php echo $data->id_kabupaten;?>,'icon.png'],
+            ['<?php echo $data->id_sumur_bor;?>', 'title',<?php echo $data->lat;?>, <?php echo $data->lon;?>,<?php echo $data->id_kabupaten;?>,''],
     <?php
        }
     ?>
@@ -205,15 +205,13 @@ function addMarker(marker) {
   var lokasi = marker[0];
   var pos = new google.maps.LatLng(marker[2], marker[3]);
   var content = marker[1];
-  var icon=marker[5];
 
   marker1 = new google.maps.Marker({
     title: title,
     position: pos,
     tip: tip,
     category: category,
-    map: map,
-    icon:icon
+    map: map
   });
 
   gmarkers1.push(marker1);
