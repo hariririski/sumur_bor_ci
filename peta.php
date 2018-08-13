@@ -65,14 +65,7 @@
     </div>
 	
     <!--container end-->
-<<<<<<< HEAD
-	<center><h1>Peta Sumur Bor </h1></center>
-	  <div class="col-lg-13 ">
-		<iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
-	  </div>
-  
-    <!--footer start-->
-=======
+
 	 <center><h1>Peta Sumur Bor </h1></center>
 	  <div class="col-lg-12 ">
   <iframe class="animated fadeInDown wow" src="maps/peta.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
