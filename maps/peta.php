@@ -102,7 +102,7 @@
 
                      </table >
 
-                     <div>
+                     <div id="legenda"  style="visibility: hidden;">
 
                       <img src="legenda.png" width="93%">
                      </div>
@@ -361,10 +361,17 @@ function toggleLayers(i)
 
   if(layers[i].getMap()==null) {
        layers[i].setMap(map);
+       if(i==5){
 
+         document.getElementById("legenda").style.visibility = 'visible';
+       }
     }
     else {
        layers[i].setMap(null);
+       if(i==5){
+
+         document.getElementById("legenda").style.visibility = 'hidden';
+       }
     }
     document.getElementById('status').innerHTML += "toggleLayers("+i+") [setMap("+layers[i].getMap()+"] returns status: "+layers[i].getStatus()+"<br>";
 
