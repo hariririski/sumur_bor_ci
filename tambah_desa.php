@@ -109,7 +109,8 @@ function getXMLHTTP() { //fuction to return the xml http object
       <div class="col-sm-8">
         <div id="statediv"><select name="state" class="form-control">
       <option>Pilih Kecamatan</option>
-             </select></div>
+             </select>
+		</div>
       </div>
     </div>
 

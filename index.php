@@ -47,7 +47,7 @@
     <![endif]-->
     <style>
     .cd-slider li:first-of-type .image {
-    background-image: url(img/kontak/peta.png);
+    background-image: url(img/kontak/sumurbor.jpg);
 
 }
 .cd-slider li:nth-of-type(3) .image {

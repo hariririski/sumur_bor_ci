@@ -80,7 +80,6 @@ function getXMLHTTP() { //fuction to return the xml http object
 		var req = getXMLHTTP();
 
 		if (req) {
-
 			req.onreadystatechange = function() {
 				if (req.readyState == 4) {
 					// only if "OK"

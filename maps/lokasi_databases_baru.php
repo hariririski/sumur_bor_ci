@@ -47,7 +47,7 @@
    <script type="text/javascript">
    var layers=[];
    <?php
-         //konfgurasi koneksi database
+         //konfgurasi layer koneksi database
          include'db.php';
             	$sql_lokasi="SELECT * FROM layer";
             	$result=mysqli_query($con,$sql_lokasi);
@@ -94,7 +94,7 @@ var map;
 	var lokasi
     //Parameter Google maps
     var options = {
-      zoom: 8, //level zoom
+      zoom: 7, //level zoom
 	  //posisi tengah peta
       center: new google.maps.LatLng(4.2952462,96.9974882),
       mapTypeId: google.maps.MapTypeId.ROADMAP

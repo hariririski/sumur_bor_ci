@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
+	
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/flexslider.css"/>
@@ -19,24 +20,19 @@
     <link rel="stylesheet" href="css/animate.css">
     <link href='assets/font.css' rel='stylesheet' type='text/css'>
 
-
-
-
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
 	<link href="table/css1/charisma-app.css" rel="stylesheet">
-
     <link href='table/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
-<script src="js/html5shiv.js">
-</script>
-<script src="js/respond.min.js">
-</script>
-<![endif]-->
+	<script src="js/html5shiv.js">
+	</script>
+	<script src="js/respond.min.js">
+	</script>
+	<![endif]-->
   </head>
 
   <body>
@@ -76,9 +72,8 @@
 
     <!--breadcrumbs end-->
 	<center> <a href="tambah_lokasi_sumur_bor.php" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah Lokasi Sumur Bor</button><center></a>
-   <div id="content" class="col-lg-12 col-sm-12">
-            <!-- content starts -->
-
+	<div id="content" class="col-lg-12 col-sm-12">
+    <!-- content starts -->
 
     <div class="container">
     <div class="box col-md-12">
@@ -91,51 +86,44 @@
         </div>
     </div>
     <div class="box-content">
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>Nama</th>
-        <th>Foto</th>
+		<table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+			<thead>
+			<tr>
+				<th><center>No</th>
+				<th><center>Nama</th>
+				<th><center>Foto</th>
+				<th><center>Desa</th>
+				<th><center>Kecamatan</th>
+				<th><center>Kabupaten/Kota</th>
+				<th><center>Kedalaman Akuifer</th>
+				<th><center>Detail</th>
+				<th><center>Proses Pekerjaan</th>
+			</tr>
+			</thead>
+		<tbody>
+		<?php
+		include('modala.php');
+            include'maps/db.php';
+                $i=0;
+                $tampil = "SELECT * FROM data_sumur_bor LEFT join desa on desa.id_desa=data_sumur_bor.desa LEFT JOIN kecamatan on kecamatan.id_kecamatan=data_sumur_bor.kecamatan left join kabupaten on kabupaten.id_kabupaten=data_sumur_bor.kabupaten"; //untuk menampilkan data pada setiap tabel yang berbeda
+                $sql = mysqli_query($con,$tampil);	//dieksekusi
+					while($data = mysqli_fetch_array($sql))	
+					{
+					$i++;
 
-
-        <th>Desa</th>
-        <th>Kecamatan</th>
-        <th>Kabupaten/Kota</th>
-        <th>Kedalaman Akuifer</th>
-        <th>Detail</th>
-        <th>Proses Pekerjaan</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-	include('modala.php');
-                  include'maps/db.php';
-                  $i=0;
-                  $tampil = "SELECT * FROM data_sumur_bor LEFT join desa on desa.id_desa=data_sumur_bor.desa LEFT JOIN kecamatan on kecamatan.id_kecamatan=data_sumur_bor.kecamatan left join kabupaten on kabupaten.id_kabupaten=data_sumur_bor.kabupaten";
-                  $sql = mysqli_query($con,$tampil);
-                  while($data = mysqli_fetch_array($sql))
-                   {
-                   $i++;
-
-
-
-                   echo '
-                   <tr>
+					echo '
+					<tr>
                     <td width="30px">'.$i.'</td>
                     <td class="center">'.$data['lokasi'].'</td>
-
 					';
-					if ($data['foto_lokasi']!=null){
+					if ($data['foto']!=null){
 					echo'
-                    <td class="center"><a href="gambar.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><img src="'.$data['foto_lokasi'].'" width="50px"></a></td>
+                    <td class="center"><a href="gambar.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><img src="img/'.$data['foto'].'" width="50px"></a></td>
 					';}
 					else{
 						echo "<td>-</td>";
 					}
 					echo'
-
 
                     <td class="center">'.$data['nama_desa'].'</td>
                     <td class="center">'.$data['nama_kecamatan'].'</td>
@@ -143,7 +131,6 @@
                     <td class="center">'.$data['kedalaman_akuifer'].'</td>
                     <td><a href="detail_lokasi_sumur_bor.php?gambar='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Detail</button><center></a></td>
                     <td><a href="tambah_proses_kegiatan.php?id='.$data['id_sumur_bor'].'" data-toggle="modal" data-target="#myModal"><button class="btn btn-primary btn-lg">Tambah</button><center></a></td>
-
 
 
                   </tr>
@@ -158,9 +145,9 @@
     </div>
     </div>
     <!--/span-->
-
     </div><!--/row-->
-        </div>
+    </div>
+	
     <!--footer start-->
    <?php include'share/footer.php';?>
 

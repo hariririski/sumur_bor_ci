@@ -10,6 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
+	
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/flexslider.css"/>
@@ -17,10 +18,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
-
-
-
-      <!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->
     <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css">
     <link href="css/component.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet">
@@ -65,16 +63,16 @@
             </div>
         </div>
     </div>
+	
     <!--container end-->
-	 <center><h1>Peta Sumur Bor </h1></center>
-	  <div class="col-lg-12 ">
-  <iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
-  </div>
+	<center><h1>Peta Sumur Bor </h1></center>
+	  <div class="col-lg-13 ">
+		<iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
+	  </div>
   
-  
-     <!--footer start-->
+    <!--footer start-->
     <?php include'share/footer.php';?>
-  <!-- js placed at the end of the document so the pages load faster -->
+	<!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/hover-dropdown.js"></script>
@@ -84,8 +82,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/link-hover.js"></script>
 
-
-     <!--common script for all pages-->
+    <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
     <script src="js/wow.min.js"></script>
     <script>

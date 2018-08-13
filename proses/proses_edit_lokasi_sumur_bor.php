@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 $nama_lokasi=$_POST['nama_lokasi'];
 $lintang=$_POST['lintang'];//5.
 $bujur=$_POST['bujur']; // 95.
@@ -30,7 +30,7 @@ if (!empty($_FILES["dokumen"]["tmp_name"])){
 		$query = mysqli_query($con,$perintah);
 		if ($query) {
 				echo "<script type='text/javascript'>alert('Selamat Anda Telah Meperbeharui data Lokasi');</script>";
-				echo '<script>document.location = "../edit_lokasi_sumur_bor.php?id='.$id.'"</script>';
+				echo '<script>document.location = "../data_lokasi_sumur_bor.php"</script>';
 		} else {
 				echo "<script type='text/javascript'>alert('Maaf Anda Gagal Perbaharui Lokasi');</script>";
 			echo '<script>document.location = "../edit_lokasi_sumur_bor.php?id='.$id.'"</script>';
